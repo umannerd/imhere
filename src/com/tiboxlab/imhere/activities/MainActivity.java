@@ -104,8 +104,8 @@ public class MainActivity extends Activity implements LocationListener, android.
         String formattedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(location.getTime()));
         
         Log.d(TAG, "BLABLA onLocationChanged with location " + location.toString());
-        int ago = Math.round(age_ms(location) /1000);
-        String text = String.format("Lat:\t %f\nLong:\t %f\nAlt:\t %.2f m\nBearing:\t %.1f\nAccuracy:\t %.2f m \nDate:\t %s\n%d seconds ago", location.getLatitude(), location.getLongitude(), location.getAltitude(), location.getBearing(), location.getAccuracy(), formattedDate, ago);
+//        int ago = Math.round(age_ms(location) /1000);
+        String text = String.format("Lat:\t %f\nLong:\t %f\nAlt:\t %.2f m\nBearing:\t %.1f\nAccuracy:\t %.2f m \nDate:\t %s", location.getLatitude(), location.getLongitude(), location.getAltitude(), location.getBearing(), location.getAccuracy(), formattedDate);
         this.textLocation.setText(text);
 
     }

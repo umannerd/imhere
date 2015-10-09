@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.tiboxlab.imhere.activities.MainActivity" >
+    tools:context="com.tiboxlab.imhere.activities.MainActivity"
+    android:background="@color/grey_200" >
 
     <LinearLayout
         android:id="@+id/header"
@@ -63,7 +64,7 @@
                 android:id="@+id/textLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="En attente du GPS, pour réception des coordonées ..." />
+                android:text="En attente du GPS ..." />
         </LinearLayout>
 
         <LinearLayout

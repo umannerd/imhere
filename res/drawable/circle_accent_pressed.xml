@@ -117,7 +117,7 @@
     </item>
     <item>
         <shape android:shape="oval" >
-            <solid android:color="@color/primary_light" />
+            <solid android:color="@color/primary_dark" />
         </shape>
     </item>
 
