@@ -26,12 +26,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * source : 
+ * Resources : 
  * http://www.rdcworld-android.blogspot.in/2012/01/get-current-location-coordinates-city.html
  * http://stackoverflow.com/questions/14222152/androids-onstatuschanged-not-working
  * https://github.com/barbeau/gpstest/blob/master/GPSTest/src/main/java/com/android/gpstest/GpsTestActivity.java
  * 
- * @author Emmanuel
+ * @author TiboxLab
  *
  */
 
