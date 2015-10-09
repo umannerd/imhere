@@ -1,0 +1,31 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.NoActionBar"></style>
+
+    <style name="AppTheme" parent="AppBaseTheme"></style>
+
+    <style name="button_accent">
+        <item name="android:textColor">@color/icons</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:background">@drawable/selector_accent</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
+
+    <style name="button_circle_accent">
+        <item name="android:textColor">@color/icons</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:background">@drawable/selector_circle_accent</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
+
+    <style name="button_primary">
+        <item name="android:textColor">@color/icons</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:background">@drawable/selector_primary</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
+
+</resources>
