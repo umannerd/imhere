@@ -88,7 +88,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:text="GPS lancé" />
+                        android:text="GPS lancé"
+                        android:textSize="20sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -102,7 +103,8 @@
                         android:id="@+id/textSatellitesFound"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10" />
+                        android:text="10"
+                        android:textColor="@color/primary_text" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -122,7 +124,8 @@
                         android:id="@+id/textSatellitesUsed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="5" />
+                        android:text="5"
+                        android:textColor="@color/primary_text" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -176,34 +179,40 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Latitude : "
-                        android:textColor="@color/secondary_text" />
+                        android:text="lat "
+                        android:textColor="@color/secondary_text"
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/textLatitude"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="XX,XXXXX" />
+                        android:text="XX,XXXXX"
+                        android:textColor="@color/primary_text"
+                        android:textSize="20sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginBottom="12dp"
                     android:layout_marginLeft="8dp"
                     android:orientation="horizontal" >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Longitude : "
-                        android:textColor="@color/secondary_text" />
+                        android:text="lon "
+                        android:textColor="@color/secondary_text"
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/textLongitude"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="XX,XXXXX" />
+                        android:text="XX,XXXXX"
+                        android:textColor="@color/primary_text"
+                        android:textSize="20sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -216,31 +225,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Altitude : "
+                        android:text="Altitude de "
                         android:textColor="@color/secondary_text" />
 
                     <TextView
                         android:id="@+id/textAltitude"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="XX,XXXXX" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginLeft="8dp"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Précision : "
-                        android:textColor="@color/secondary_text" />
-
-                    <TextView
-                        android:id="@+id/textAccuracy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="XX m" />
@@ -249,20 +238,42 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="8dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textAccuracy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="XX m"
+                        android:textColor="@color/primary_text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" de précision"
+                        android:textColor="@color/secondary_text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:orientation="horizontal" >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Heure : "
+                        android:text="Réceptionné à "
                         android:textColor="@color/secondary_text" />
 
                     <TextView
                         android:id="@+id/textDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="XX:XX:XX" />
+                        android:text="XX:XX:XX"
+                        android:textColor="@color/primary_text" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
