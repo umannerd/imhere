@@ -5,11 +5,10 @@ import java.util.Date;
 import java.util.Locale;
 
 import com.tiboxlab.imhere.R;
-import com.tiboxlab.imhere.R.id;
-import com.tiboxlab.imhere.R.layout;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.location.GpsSatellite;
 import android.location.GpsStatus;
@@ -20,10 +19,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.util.Log;
+import android.os.Vibrator;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -51,6 +50,7 @@ public class MainActivity extends Activity implements LocationListener, android.
 	TextView textGpsStatus = null;
 	TextView textSatellitesFound = null;
 	TextView textSatellitesUsed = null;
+	LinearLayout layoutCoordinates = null;
 
 	LocationManager locationManager = null;
 	Location location = null;
@@ -72,6 +72,8 @@ public class MainActivity extends Activity implements LocationListener, android.
 		textGpsStatus = (TextView) this.findViewById(R.id.textGpsStatus);
 		textSatellitesUsed = (TextView) this.findViewById(R.id.textSatellitesUsed);
 		textSatellitesFound = (TextView) this.findViewById(R.id.textSatellitesFound);
+		textSend = (TextView) this.findViewById(R.id.buttonSend);
+		layoutCoordinates = (LinearLayout) this.findViewById(R.id.layoutCoordinates);
 
 		this.textDate.setText("");
 		this.textAccuracy.setText("");
@@ -83,10 +85,10 @@ public class MainActivity extends Activity implements LocationListener, android.
 		this.textSatellitesFound.setText("0");
 		this.textGpsStatus.setText("");
 
-		textSend = (TextView) this.findViewById(R.id.buttonSend);
-
 		locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
 		locationManager.addGpsStatusListener(this);
+
+		layoutCoordinates.setVisibility(View.GONE);
 
 		// location =
 		// locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -95,14 +97,12 @@ public class MainActivity extends Activity implements LocationListener, android.
 		textSend.setVisibility(View.GONE);
 		textSend.setOnClickListener(new OnClickListener()
 		{
-
 			@Override
 			public void onClick(View v)
 			{
 				sendLocation();
 			}
 		});
-
 	}
 
 	@Override
@@ -119,11 +119,21 @@ public class MainActivity extends Activity implements LocationListener, android.
 		locationManager.removeUpdates(this);
 	}
 
+	public void vibrate()
+	{
+		Vibrator vibrator;
+		vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		vibrator.vibrate(500);
+	}
+
 	@Override
 	public void onLocationChanged(Location receivedLocation)
 	{
 		if (receivedLocation == null)
 			return;
+
+		if (location == null)
+			vibrate();
 
 		location = receivedLocation;
 		textSend.setVisibility(View.VISIBLE);
@@ -136,6 +146,7 @@ public class MainActivity extends Activity implements LocationListener, android.
 		this.textLongitude.setText(String.format("%f", location.getLongitude()));
 		this.textAltitude.setText(String.format("%.0f m", location.getAltitude()));
 
+		layoutCoordinates.setVisibility(View.VISIBLE);
 	}
 
 	public long age_ms(Location last)
@@ -182,16 +193,16 @@ public class MainActivity extends Activity implements LocationListener, android.
 
 		switch (event) {
 		case GpsStatus.GPS_EVENT_FIRST_FIX:
-			textGpsStatus.setText("premier fix");
+			textGpsStatus.setText("GPS premier fix");
 			break;
 		case GpsStatus.GPS_EVENT_STARTED:
-			textGpsStatus.setText("début");
+			textGpsStatus.setText("GPS lancé");
 			break;
 		case GpsStatus.GPS_EVENT_STOPPED:
-			textGpsStatus.setText("fin");
+			textGpsStatus.setText("GPS arrêté");
 			break;
 		case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
-			textGpsStatus.setText("recherche");
+			textGpsStatus.setText("GPS en écoute");
 			break;
 		default:
 			break;
@@ -209,7 +220,7 @@ public class MainActivity extends Activity implements LocationListener, android.
 		}
 		textSatellitesFound.setText(Integer.toString(satellitesSize));
 		textSatellitesUsed.setText(Integer.toString(satellitesUsedInFixSize));
-		
+
 	}
 
 	private void sendLocation()
