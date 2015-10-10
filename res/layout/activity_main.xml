@@ -2,9 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey_200"
     android:orientation="vertical"
-    tools:context="com.tiboxlab.imhere.activities.MainActivity"
-    android:background="@color/grey_200" >
+    tools:context="com.tiboxlab.imhere.activities.MainActivity" >
 
     <LinearLayout
         android:id="@+id/header"
@@ -21,10 +21,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:padding="18dp"
-                android:text="Où suis-je ?"
-                android:textAllCaps="true"
+                android:text="OU SUIS-JE ?"
                 android:textColor="@color/icons"
                 android:textSize="25sp" />
         </LinearLayout>
@@ -55,16 +53,109 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="16dp"
                 android:text="Coordonnées "
                 android:textColor="@color/primary_dark"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/textLocation"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="En attente du GPS ..." />
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Latitude : "
+                    android:textColor="@color/secondary_text" />
+
+                <TextView
+                    android:id="@+id/textLatitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XX,XXXXX" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Longitude : "
+                    android:textColor="@color/secondary_text" />
+
+                <TextView
+                    android:id="@+id/textLongitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XX,XXXXX" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Altitude : "
+                    android:textColor="@color/secondary_text" />
+
+                <TextView
+                    android:id="@+id/textAltitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XX,XXXXX" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Précision : "
+                    android:textColor="@color/secondary_text" />
+
+                <TextView
+                    android:id="@+id/textAccuracy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XX m" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Heure : "
+                    android:textColor="@color/secondary_text" />
+
+                <TextView
+                    android:id="@+id/textDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XX:XX:XX" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -80,22 +171,70 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Satellites"
+                android:layout_marginBottom="16dp"
+                android:text="Satelittes"
                 android:textColor="@color/primary_dark"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/textGps"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="GPS Listner" />
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/textSatellites"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Etat GPS : "
+                    android:textColor="@color/secondary_text" />
+
+                <TextView
+                    android:id="@+id/textGpsStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="START" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Satellite status" />
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Satellites trouvés : "
+                    android:textColor="@color/secondary_text" />
+
+                <TextView
+                    android:id="@+id/textSatellitesFound"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Satellites utilisés : "
+                    android:textColor="@color/secondary_text" />
+
+                <TextView
+                    android:id="@+id/textSatellitesUsed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

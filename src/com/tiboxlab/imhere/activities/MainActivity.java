@@ -2,6 +2,7 @@ package com.tiboxlab.imhere.activities;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import com.tiboxlab.imhere.R;
 import com.tiboxlab.imhere.R.id;
@@ -26,10 +27,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * Resources : 
- * http://www.rdcworld-android.blogspot.in/2012/01/get-current-location-coordinates-city.html
- * http://stackoverflow.com/questions/14222152/androids-onstatuschanged-not-working
- * https://github.com/barbeau/gpstest/blob/master/GPSTest/src/main/java/com/android/gpstest/GpsTestActivity.java
+ * Resources :
+ * http://www.rdcworld-android.blogspot.in/2012/01/get-current-location-
+ * coordinates-city.html
+ * http://stackoverflow.com/questions/14222152/androids-onstatuschanged-not-
+ * working
+ * https://github.com/barbeau/gpstest/blob/master/GPSTest/src/main/java/com/
+ * android/gpstest/GpsTestActivity.java
  * 
  * @author TiboxLab
  *
@@ -37,160 +41,187 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements LocationListener, android.location.GpsStatus.Listener
 {
-    private static final String TAG = "LocationActivity";
-    TextView textLocation = null;
-    TextView textGps = null;
-    TextView textSatelittes = null;
-    TextView textSend = null;
+	private static final String TAG = "LocationActivity";
+	TextView textAccuracy = null;
+	TextView textLatitude = null;
+	TextView textLongitude = null;
+	TextView textAltitude = null;
+	TextView textDate = null;
+	TextView textSend = null;
+	TextView textGpsStatus = null;
+	TextView textSatellitesFound = null;
+	TextView textSatellitesUsed = null;
 
-    LocationManager locationManager = null;
-    Location location = null;
-    GpsStatus status = null;
+	LocationManager locationManager = null;
+	Location location = null;
+	GpsStatus status = null;
 
-    //    Geocoder geocoder;
+	// Geocoder geocoder;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
 
-        textLocation = (TextView) this.findViewById(R.id.textLocation);
-        textGps = (TextView) this.findViewById(R.id.textGps);
-        textSatelittes = (TextView) this.findViewById(R.id.textSatellites);
-        textSend = (TextView) this.findViewById(R.id.buttonSend);
+		textAccuracy = (TextView) this.findViewById(R.id.textAccuracy);
+		textLatitude = (TextView) this.findViewById(R.id.textLatitude);
+		textLongitude = (TextView) this.findViewById(R.id.textLongitude);
+		textAltitude = (TextView) this.findViewById(R.id.textAltitude);
+		textDate = (TextView) this.findViewById(R.id.textDate);
+		textGpsStatus = (TextView) this.findViewById(R.id.textGpsStatus);
+		textSatellitesUsed = (TextView) this.findViewById(R.id.textSatellitesUsed);
+		textSatellitesFound = (TextView) this.findViewById(R.id.textSatellitesFound);
 
-        locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
-        locationManager.addGpsStatusListener(this);
-        
-//        location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//        this.onLocationChanged(location);
-        
-        textSend.setVisibility(View.GONE);
-        textSend.setOnClickListener(new OnClickListener() {
+		this.textDate.setText("");
+		this.textAccuracy.setText("");
+		this.textLatitude.setText("");
+		this.textLongitude.setText("");
+		this.textAltitude.setText("");
+		this.textGpsStatus.setText("");
+		this.textSatellitesUsed.setText("0");
+		this.textSatellitesFound.setText("0");
+		this.textGpsStatus.setText("");
 
-            @Override
-            public void onClick(View v)
-            {
-                sendLocation();
-            }
-        });
+		textSend = (TextView) this.findViewById(R.id.buttonSend);
 
-    }
+		locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
+		locationManager.addGpsStatusListener(this);
 
+		// location =
+		// locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		// this.onLocationChanged(location);
 
-    @Override
-    protected void onResume()
-    {
-        super.onResume();
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, this);
-    }
+		textSend.setVisibility(View.GONE);
+		textSend.setOnClickListener(new OnClickListener()
+		{
 
-    @Override
-    protected void onPause()
-    {
-        super.onPause();
-        locationManager.removeUpdates(this);
-    }
+			@Override
+			public void onClick(View v)
+			{
+				sendLocation();
+			}
+		});
 
-    @Override
-    public void onLocationChanged(Location receivedLocation)
-    {
-        if (receivedLocation == null) return;
+	}
 
-        location = receivedLocation;
-        textSend.setVisibility(View.VISIBLE);
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, this);
+	}
 
-        String formattedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(location.getTime()));
-        
-        Log.d(TAG, "BLABLA onLocationChanged with location " + location.toString());
-//        int ago = Math.round(age_ms(location) /1000);
-        String text = String.format("Lat:\t %f\nLong:\t %f\nAlt:\t %.2f m\nBearing:\t %.1f\nAccuracy:\t %.2f m \nDate:\t %s", location.getLatitude(), location.getLongitude(), location.getAltitude(), location.getBearing(), location.getAccuracy(), formattedDate);
-        this.textLocation.setText(text);
+	@Override
+	protected void onPause()
+	{
+		super.onPause();
+		locationManager.removeUpdates(this);
+	}
 
-    }
+	@Override
+	public void onLocationChanged(Location receivedLocation)
+	{
+		if (receivedLocation == null)
+			return;
 
-    public long age_ms(Location last) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-            return age_ms_api_17(last);
-        return age_ms_api_pre_17(last);
-    }
+		location = receivedLocation;
+		textSend.setVisibility(View.VISIBLE);
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    private long age_ms_api_17(Location last) {
-        return (SystemClock.elapsedRealtimeNanos() - last
-                .getElapsedRealtimeNanos()) / 1000000;
-    }
+		String formattedDate = new SimpleDateFormat("HH:mm:ss", Locale.FRANCE).format(new Date(location.getTime()));
 
-    private long age_ms_api_pre_17(Location last) {
-        return System.currentTimeMillis() - last.getTime();
-    }
-    
-    @Override
-    public void onProviderDisabled(String provider)
-    {
-        // TODO Auto-generated method stub
+		this.textDate.setText(formattedDate);
+		this.textAccuracy.setText(String.format("%.0f m", location.getAccuracy()));
+		this.textLatitude.setText(String.format("%f", location.getLatitude()));
+		this.textLongitude.setText(String.format("%f", location.getLongitude()));
+		this.textAltitude.setText(String.format("%.0f m", location.getAltitude()));
 
-    }
+	}
 
-    @Override
-    public void onProviderEnabled(String provider)
-    {
-        // TODO Auto-generated method stub
+	public long age_ms(Location last)
+	{
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+			return age_ms_api_17(last);
+		return age_ms_api_pre_17(last);
+	}
 
-    }
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+	private long age_ms_api_17(Location last)
+	{
+		return (SystemClock.elapsedRealtimeNanos() - last.getElapsedRealtimeNanos()) / 1000000;
+	}
 
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras)
-    {
-    }
+	private long age_ms_api_pre_17(Location last)
+	{
+		return System.currentTimeMillis() - last.getTime();
+	}
 
-    @Override
-    public void onGpsStatusChanged(int event)
-    {
-        status = locationManager.getGpsStatus(status);
+	@Override
+	public void onProviderDisabled(String provider)
+	{
+		// TODO Auto-generated method stub
 
-        switch (event)
-        {
-        case GpsStatus.GPS_EVENT_FIRST_FIX:
-            textGps.setText("GPS_EVENT_FIRST_FIX");
-            break;
-        case GpsStatus.GPS_EVENT_STARTED:
-            textGps.setText("GPS_EVENT_START");
-            break;
-        case GpsStatus.GPS_EVENT_STOPPED:
-            textGps.setText("GPS_EVENT_STOP");
-            break;
-        case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
-            textGps.setText("GPS_EVENT_SATELLITE_STATUS");
+	}
 
-            break;
-        default:
-            break;
-        }
+	@Override
+	public void onProviderEnabled(String provider)
+	{
+		// TODO Auto-generated method stub
 
-        double timeToFirstFix = (status.getTimeToFirstFix() / 1000);
-        int satellitesSize = 0;
-        int satellitesUsedInFixSize = 0;
+	}
 
-        for (GpsSatellite sat : status.getSatellites())
-        {
-            satellitesSize++;
-            if (sat.usedInFix()) satellitesUsedInFixSize++;
-        }
-        textSatelittes.setText(String.format("FirstFix :\t%.2f \nSatellites :\t%d \nSat used in fix : \t%d", timeToFirstFix, satellitesSize, satellitesUsedInFixSize));
-    }
-    
-    private void sendLocation()
-    {
-        if (location != null)
-        {
-            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("sms:"));
-            String strLocation = "Je suis là, pouvez-vous venir me chercher ?\nhttp://maps.google.com/maps?geocode=&q=" + Double.toString(location.getLatitude()) + "," + Double.toString(location.getLongitude());
-            intent.putExtra("sms_body", strLocation);
-            startActivity(intent);
-        }
-    }
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras)
+	{
+	}
 
+	@Override
+	public void onGpsStatusChanged(int event)
+	{
+		status = locationManager.getGpsStatus(status);
+
+		switch (event) {
+		case GpsStatus.GPS_EVENT_FIRST_FIX:
+			textGpsStatus.setText("premier fix");
+			break;
+		case GpsStatus.GPS_EVENT_STARTED:
+			textGpsStatus.setText("début");
+			break;
+		case GpsStatus.GPS_EVENT_STOPPED:
+			textGpsStatus.setText("fin");
+			break;
+		case GpsStatus.GPS_EVENT_SATELLITE_STATUS:
+			textGpsStatus.setText("recherche");
+			break;
+		default:
+			break;
+		}
+
+		double timeToFirstFix = (status.getTimeToFirstFix() / 1000);
+		int satellitesSize = 0;
+		int satellitesUsedInFixSize = 0;
+
+		for (GpsSatellite sat : status.getSatellites())
+		{
+			satellitesSize++;
+			if (sat.usedInFix())
+				satellitesUsedInFixSize++;
+		}
+		textSatellitesFound.setText(Integer.toString(satellitesSize));
+		textSatellitesUsed.setText(Integer.toString(satellitesUsedInFixSize));
+		
+	}
+
+	private void sendLocation()
+	{
+		if (location != null)
+		{
+			Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("sms:"));
+			String strLocation = "Je suis là, pouvez-vous venir me chercher ?\nhttp://maps.google.com/maps?geocode=&q="
+			        + Double.toString(location.getLatitude()) + "," + Double.toString(location.getLongitude());
+			intent.putExtra("sms_body", strLocation);
+			startActivity(intent);
+		}
+	}
 
 }
