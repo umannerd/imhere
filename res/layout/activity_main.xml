@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="18dp"
-                android:text="OU SUIS-JE ?"
+                android:text="@string/activity_main_header_title"
                 android:textColor="@color/icons"
                 android:textSize="25sp" />
         </LinearLayout>
@@ -62,6 +62,7 @@
                     <com.tiboxlab.imhere.widgets.AwesomeTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
                         android:layout_marginRight="12dp"
                         android:gravity="center"
                         android:text="@string/icon_gear"
@@ -72,7 +73,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        android:text="Satellites"
+                        android:text="@string/activity_main_card_satellite_title"
                         android:textColor="@color/primary_dark"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -88,7 +89,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:text="GPS lancé"
+                        android:text="@string/activity_main_gps_status"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -97,19 +98,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:orientation="horizontal" >
 
                     <TextView
                         android:id="@+id/textSatellitesFound"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10"
+                        android:paddingEnd="5dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="5dp"
+                        android:paddingStart="0dp"
+                        android:text="@string/activity_main_satellites_found_value"
                         android:textColor="@color/primary_text" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" satellites trouvés"
+                        android:text="@string/activity_main_satellites_found_label"
                         android:textColor="@color/secondary_text" />
                 </LinearLayout>
 
@@ -118,19 +124,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:orientation="horizontal" >
 
                     <TextView
                         android:id="@+id/textSatellitesUsed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="5"
+                        android:paddingEnd="5dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="5dp"
+                        android:paddingStart="0dp"
+                        android:text="@string/activity_main_satellites_used_value"
                         android:textColor="@color/primary_text" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" satellites utilisés"
+                        android:text="@string/activity_main_satellites_used_label"
                         android:textColor="@color/secondary_text" />
                 </LinearLayout>
             </LinearLayout>
@@ -154,6 +165,7 @@
                     <com.tiboxlab.imhere.widgets.AwesomeTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
                         android:layout_marginRight="12dp"
                         android:gravity="center"
                         android:text="@string/icon_map_marker"
@@ -164,7 +176,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        android:text="Coordonnées "
+                        android:text="@string/activity_main_card_coordinates_title"
                         android:textColor="@color/primary_dark"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -174,12 +186,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:orientation="horizontal" >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="lat "
+                        android:paddingEnd="5dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="5dp"
+                        android:paddingStart="0dp"
+                        android:text="@string/activity_main_latitude_label"
                         android:textColor="@color/secondary_text"
                         android:textSize="20sp" />
 
@@ -187,7 +204,7 @@
                         android:id="@+id/textLatitude"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="XX,XXXXX"
+                        android:text="@string/activity_main_latitude_value"
                         android:textColor="@color/primary_text"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -197,12 +214,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:orientation="horizontal" >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="lon "
+                        android:paddingEnd="5dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="5dp"
+                        android:paddingStart="0dp"
+                        android:text="@string/activity_main_longitude_label"
                         android:textColor="@color/secondary_text"
                         android:textSize="20sp" />
 
@@ -210,7 +232,7 @@
                         android:id="@+id/textLongitude"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="XX,XXXXX"
+                        android:text="@string/activity_main_longitude_value"
                         android:textColor="@color/primary_text"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -220,19 +242,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:orientation="horizontal" >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Altitude de "
+                        android:paddingEnd="5dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="5dp"
+                        android:paddingStart="0dp"
+                        android:text="@string/activity_main_altitude_label"
                         android:textColor="@color/secondary_text" />
 
                     <TextView
                         android:id="@+id/textAltitude"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="XX m" />
+                        android:text="@string/activity_main_altitude_value" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -240,19 +267,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:orientation="horizontal" >
 
                     <TextView
                         android:id="@+id/textAccuracy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="XX m"
+                        android:paddingEnd="5dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="5dp"
+                        android:paddingStart="0dp"
+                        android:text="@string/activity_main_accuracy_value"
                         android:textColor="@color/primary_text" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" de précision"
+                        android:text="@string/activity_main_accuracy_label"
                         android:textColor="@color/secondary_text" />
                 </LinearLayout>
 
@@ -260,19 +292,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:orientation="horizontal" >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Réceptionné à "
+                        android:paddingEnd="5dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="5dp"
+                        android:paddingStart="0dp"
+                        android:text="@string/activity_main_date_label"
                         android:textColor="@color/secondary_text" />
 
                     <TextView
                         android:id="@+id/textDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="XX:XX:XX"
+                        android:text="@string/activity_main_date_value"
                         android:textColor="@color/primary_text" />
                 </LinearLayout>
             </LinearLayout>
@@ -285,10 +322,11 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="30dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:alpha="1"
         android:gravity="center"
         android:text="@string/icon_envelope"
         android:textSize="30sp" />

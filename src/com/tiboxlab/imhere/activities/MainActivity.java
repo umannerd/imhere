@@ -40,7 +40,6 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements LocationListener, android.location.GpsStatus.Listener
 {
-	private static final String TAG = "LocationActivity";
 	TextView textAccuracy = null;
 	TextView textLatitude = null;
 	TextView textLongitude = null;
@@ -129,11 +128,9 @@ public class MainActivity extends Activity implements LocationListener, android.
 	@Override
 	public void onLocationChanged(Location receivedLocation)
 	{
-		if (receivedLocation == null)
-			return;
+		if (receivedLocation == null) return;
 
-		if (location == null)
-			vibrate();
+		if (location == null) vibrate();
 
 		location = receivedLocation;
 		textSend.setVisibility(View.VISIBLE);
@@ -151,8 +148,7 @@ public class MainActivity extends Activity implements LocationListener, android.
 
 	public long age_ms(Location last)
 	{
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-			return age_ms_api_17(last);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) return age_ms_api_17(last);
 		return age_ms_api_pre_17(last);
 	}
 
@@ -170,15 +166,11 @@ public class MainActivity extends Activity implements LocationListener, android.
 	@Override
 	public void onProviderDisabled(String provider)
 	{
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void onProviderEnabled(String provider)
 	{
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -208,15 +200,13 @@ public class MainActivity extends Activity implements LocationListener, android.
 			break;
 		}
 
-		double timeToFirstFix = (status.getTimeToFirstFix() / 1000);
 		int satellitesSize = 0;
 		int satellitesUsedInFixSize = 0;
 
 		for (GpsSatellite sat : status.getSatellites())
 		{
 			satellitesSize++;
-			if (sat.usedInFix())
-				satellitesUsedInFixSize++;
+			if (sat.usedInFix()) satellitesUsedInFixSize++;
 		}
 		textSatellitesFound.setText(Integer.toString(satellitesSize));
 		textSatellitesUsed.setText(Integer.toString(satellitesUsedInFixSize));

@@ -5,4 +5,24 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string name="activity_main_header_title">OU SUIS-JE ?</string>
+    <string name="activity_main_card_satellite_title">Satellites</string>
+    <string name="activity_main_gps_status">GPS lancé</string>
+    <string name="activity_main_satellites_found_value">10</string>
+    <string name="activity_main_satellites_found_label"> satellites trouvés</string>
+    
+    <string name="activity_main_satellites_used_value">5</string>
+    <string name="activity_main_satellites_used_label"> satellites utilisés</string>
+    <string name="activity_main_card_coordinates_title">Coordonnées </string>
+    <string name="activity_main_latitude_label">lat </string>
+    <string name="activity_main_latitude_value">XX.XXXXX</string>
+    <string name="activity_main_longitude_label">lon </string>
+    <string name="activity_main_longitude_value">XX.XXXXX</string>
+    <string name="activity_main_altitude_label">Altitude de </string>
+    <string name="activity_main_altitude_value">XX m</string>
+    <string name="activity_main_accuracy_label"> de précision</string>
+    <string name="activity_main_accuracy_value">XX m</string>
+    <string name="activity_main_date_label">Réceptionné à </string>
+    <string name="activity_main_date_value">XX:XX:XX</string>
+    
 </resources>
